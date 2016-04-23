@@ -48,6 +48,19 @@ def doYouKnowMoon(request):
     dictValues['questions'] = questions
     return render_to_response('doYouKnowMoon.html',dictValues)
 
+def checkAnswers(request):
+    questions = Question.objects.all()
+    score = 0
+    for i in range(questions.count()):
+        question = questions[i]
+        print request.POST
+        ans = request.POST.get(str(i+1))
+        print question.correctAns,ans
+        if ans == question.correctAns:
+            score+=1
+        print "score",score
+    return HttpResponse(score)
+
 
 #test views
 class listener(StreamListener):

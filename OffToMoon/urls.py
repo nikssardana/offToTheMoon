@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^storyteller$', views.storyTeller),
     url(r'^tripToApollo$', views.tripToApollo),
     url(r'^moonQuiz$', views.doYouKnowMoon),
+    url(r'^checkAnswers$', views.checkAnswers),
     url(r'^markMyTerritory$', views.index),
 
     #test urls
