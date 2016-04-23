@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{%block title%}
+Storyteller | Off to Moon
+{% endblock %}
+
+{%block content%}
+<div class="container">
+    {% for answer,correctAnswer in list %}
+    <div class="row">
+                <div class="col-xs-12"><strong>Q{{forloop.counter}}. </strong>
+ Your Answer: {{answer}} </div>
+        <div class="col-xs-12">Correct Answer: {{correctAnswer}} </div>
+
+    </div>
+    {% endfor %}
+    <div class="row">
+        <div class="col-xs-12">
+        <strong>Final Score: {{score}} </strong>
+        </div>
+    </div>
+
+</div>
+
+{%endblock%}
