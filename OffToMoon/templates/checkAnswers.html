@@ -2,10 +2,11 @@
 {% load staticfiles %}
 
 {%block title%}
-Storyteller | Off to Moon
+Check Answers | Off to Moon
 {% endblock %}
 
-{%block content%}
+{% block content %}
+
 <div class="container">
     {% for answer,correctAnswer in list %}
     <div class="row">
@@ -20,7 +21,6 @@ Storyteller | Off to Moon
         <strong>Final Score: {{score}} </strong>
         </div>
     </div>
-
 </div>
 
 {%endblock%}

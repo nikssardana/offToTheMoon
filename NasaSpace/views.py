@@ -21,7 +21,7 @@ def whereAreYouMoon(request):
     dictValues = {}
     return render_to_response('whereAreYouMoon.html',dictValues)
 
-def storyTeller(request):
+def moonStory(request):
     dictValues = {}
     dictValues = {}
     size = StoryAboutMoon.objects.all().count()
@@ -29,7 +29,7 @@ def storyTeller(request):
     rno = random.randint(0,size-1)
     randomStory = StoryAboutMoon.objects.all()[rno] #pick up a random story from the database
     dictValues['story'] = randomStory
-    return render_to_response('storyTeller.html',dictValues)
+    return render_to_response('moonStory.html',dictValues)
 
 def tripToApollo(request):
     dictValues = {}

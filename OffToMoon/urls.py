@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^$', views.index),
 
     url(r'^whereAreYouMoon$', views.whereAreYouMoon),
-    url(r'^storyteller$', views.storyTeller),
+    url(r'^moonStory$', views.moonStory),
     url(r'^tripToApollo$', views.tripToApollo),
     url(r'^moonQuiz$', views.doYouKnowMoon),
     url(r'^checkAnswers$', views.checkAnswers),
