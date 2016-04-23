@@ -126,3 +126,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+PROJECT_ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+MEDIA_ROOT = os.path.join(PROJECT_ROOT_PATH,'static/media/')
+MEDIA_URL = '/static/media/'
+

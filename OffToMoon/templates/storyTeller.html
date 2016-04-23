@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{%block title%}
+    Storyteller | Off to Moon
+{% endblock %}
+
+{%block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img width="100%" src="/static/media/{{story.image}}">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <strong>{{story.type}}:</strong> {{story.text}}
+            </div>
+        </div>
+    </div>
+    
+{%endblock%}

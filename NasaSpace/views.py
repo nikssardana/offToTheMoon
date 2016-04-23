@@ -6,6 +6,7 @@ from tweepy import Stream,OAuthHandler
 from tweepy.streaming import StreamListener
 import tweepy
 import os
+import random
 
 ckey = 'nwzgTPY9sYr0L70x61Z7Qzd5Z'
 csecret = 'dRrOCyqH1Jp2j6fv0O9F4yPhvYXF0VmMx8ieyav30E275O13zs'
@@ -20,6 +21,18 @@ def whereAreYouMoon(request):
     dictValues = {}
     return render_to_response('whereAreYouMoon.html',dictValues)
 
+def storyTeller(request):
+    dictValues = {}
+    dictValues = {}
+    size = StoryAboutMoon.objects.all().count()
+    print "num of objects:",size
+    rno = random.randint(0,size-1)
+    randomStory = StoryAboutMoon.objects.all()[rno] #pick up a random story from the database
+    dictValues['story'] = randomStory
+    return render_to_response('storyTeller.html',dictValues)
+
+
+#test views
 class listener(StreamListener):
     def on_data(self, data):
         print(data)
