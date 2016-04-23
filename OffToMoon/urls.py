@@ -22,10 +22,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
 
-    url(r'^whereAreYouMoon$', views.index),
+    url(r'^whereAreYouMoon$', views.whereAreYouMoon),
     url(r'^storyteller$', views.index),
     url(r'^tripToApollo$', views.index),
     url(r'^moonQuiz$', views.index),
+    url(r'^markMyTerritory$', views.index),
 
     #test urls
     url(r'^uploadImage$', views.uploadImage), #upload image on twitter

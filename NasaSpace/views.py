@@ -12,6 +12,14 @@ csecret = 'dRrOCyqH1Jp2j6fv0O9F4yPhvYXF0VmMx8ieyav30E275O13zs'
 atoken = '63136441-BXcHjrKjvefkRbMYXho0ZFvShyGKLBbTUD03wizKB'
 asecret = 'Ht3j7ChKwN0lb21hCo6HRMoUFIiOSzKmv1sjggQFT98vF'
 
+
+def index(request):
+    return render_to_response('index.html',{})
+
+def whereAreYouMoon(request):
+    dictValues = {}
+    return render_to_response('whereAreYouMoon.html',dictValues)
+
 class listener(StreamListener):
     def on_data(self, data):
         print(data)
@@ -57,6 +65,3 @@ def authorizeAndShowFriends(request):
     friends = api.friends()
     print "Friends:",friends
     return HttpResponse(friends)
-
-def index(request):
-    return render_to_response('index.html',{})
