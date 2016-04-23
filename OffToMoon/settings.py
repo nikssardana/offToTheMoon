@@ -122,4 +122,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-#Oauth settings
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

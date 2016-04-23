@@ -1,4 +1,6 @@
-<html>
+{% load staticfiles %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" manifest="cache.manifest">
     <head>
         <title>
 
@@ -17,6 +19,13 @@
 
         <!-- Bootstrap Javascript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+        <!-- Calculate Moon Distance -->
+        <script type="text/javascript" src="{%static 'suncalc.js' %}" charset="UTF-8"></script>
+
+
+
     </head>
 
     <body>
