@@ -25,11 +25,21 @@ def storyTeller(request):
     dictValues = {}
     dictValues = {}
     size = StoryAboutMoon.objects.all().count()
-    print "num of objects:",size
+    #print "num of objects:",size
     rno = random.randint(0,size-1)
     randomStory = StoryAboutMoon.objects.all()[rno] #pick up a random story from the database
     dictValues['story'] = randomStory
     return render_to_response('storyTeller.html',dictValues)
+
+def tripToApollo(request):
+    dictValues = {}
+    dictValues = {}
+    size = ApolloImages.objects.all().count()
+    #print "num of objects:",size
+    rno = random.randint(0,size-1)
+    randomStory = ApolloImages.objects.all()[rno] #pick up a random story from the database
+    dictValues['apolloImage'] = randomStory
+    return render_to_response('tripToApollo.html',dictValues)
 
 
 #test views

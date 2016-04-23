@@ -9,3 +9,7 @@ class StoryAboutMoon(models.Model):
     text = models.CharField(max_length = 1000,blank=True,null=True)
     type = models.CharField(max_length = 10,choices = typeChoices,blank=True,null=True)
     image = models.ImageField(blank=True,null=True)
+
+class ApolloImages(models.Model):
+    image = models.ImageField(blank=True,null=True)
+    description = models.CharField(max_length=1000)

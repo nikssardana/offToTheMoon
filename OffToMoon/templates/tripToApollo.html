@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{%block title%}
+    Trip to Apollo | Off to Moon
+{% endblock %}
+
+{%block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <img width="100%" src="/static/media/{{apolloImage.image}}">
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                {{apolloImage.description}}
+            </div>
+        </div>
+    </div>
+    
+{%endblock%}
