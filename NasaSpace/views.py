@@ -66,6 +66,10 @@ def checkAnswers(request):
     dictValues['list'] = zip(answers,correctAnswers)
     return render_to_response('checkAnswers.html',dictValues)
 
+def markMyTerritory(request):
+    return render_to_response('markMyTerritory.html',{})
+
+
 
 #test views
 class listener(StreamListener):

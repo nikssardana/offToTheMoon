@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^tripToApollo$', views.tripToApollo),
     url(r'^moonQuiz$', views.doYouKnowMoon),
     url(r'^checkAnswers$', views.checkAnswers),
-    url(r'^markMyTerritory$', views.index),
+    url(r'^markMyTerritory$', views.markMyTerritory),
 
     #test urls
     url(r'^uploadImage$', views.uploadImage), #upload image on twitter
