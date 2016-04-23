@@ -41,6 +41,13 @@ def tripToApollo(request):
     dictValues['apolloImage'] = randomStory
     return render_to_response('tripToApollo.html',dictValues)
 
+def doYouKnowMoon(request):
+    dictValues = {}
+    dictValues.update(csrf(request))
+    questions = Question.objects.all()
+    dictValues['questions'] = questions
+    return render_to_response('doYouKnowMoon.html',dictValues)
+
 
 #test views
 class listener(StreamListener):
