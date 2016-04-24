@@ -20,7 +20,8 @@ from NasaSpace import views
 urlpatterns = [
     #actual urls
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index),
+    #url(r'^$', views.index),
+    url(r'^$', views.whereAreYouMoon),
 
     url(r'^whereAreYouMoon$', views.whereAreYouMoon),
     url(r'^moonStory$', views.moonStory),
