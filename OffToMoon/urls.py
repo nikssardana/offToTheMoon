@@ -31,6 +31,8 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^login/$', views.login),
     url(r'^spaceStation/$', views.spaceStation),
+    url(r'^moonland/$', views.moonland),
+    url(r'^spacecraft/$', views.spacecraft),
     url(r'^createWater/$', views.createWater),
 
     #test urls

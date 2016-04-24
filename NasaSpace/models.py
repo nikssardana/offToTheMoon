@@ -33,5 +33,6 @@ class MyTent(models.Model): #list of items in the tent
     Poop = models.IntegerField(default=10)
     Fuel = models.IntegerField(default=0) #Will be required to run the hover
     CarbonDioxide = models.IntegerField(default=10) #Amount of CO2 will increase after specific time interval
+    Food = models.IntegerField(default=10)
     Visited = models.BooleanField(default=False) #Check if this is the user's first visit or not
     User = models.ForeignKey(User) #User with whom the tent is associated

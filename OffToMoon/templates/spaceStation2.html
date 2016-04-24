@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{%block title%}
+    Space Station | Off to Moon
+{% endblock %}
+
+{%block content%}
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="row">
+	<div class="col s12">
+		<div class="list-group">
+			<a href="/spacecraft/" class="list-group-item">Space Craft <span class="badge">1</span></a>
+			<a class="list-group-item disabled" >Rover <span class="badge">0</span></a>  <!-- add link here for rover -->
+			<a href="/moonland/" class="list-group-item" >Moon Land <span class="badge">&infin;</span></a>
+		</div>
+	</div>
+</div>
+{%endblock%}

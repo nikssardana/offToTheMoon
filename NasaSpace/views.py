@@ -103,7 +103,8 @@ def spaceStation(request):
     station.Visited = True #mark the station as visited
     station.save()
     dictValues['station'] = station
-    return render_to_response('spaceStation.html',dictValues)
+    #return render_to_response('spaceStation.html',dictValues)
+    return render_to_response('spaceStation2.html',dictValues)
 
 @login_required
 def createWater(request):
@@ -126,7 +127,19 @@ def createWater(request):
     except:
         return HttpResponse('Error')
 
-    pass
+@login_required
+def moonland(request):
+    dictValues = {}
+    myStation = MyTent.objects.get(User=request.user)
+    dictValues['station'] = myStation
+    return render_to_response('moonland.html',dictValues)
+
+@login_required
+def spacecraft(request):
+    dictValues = {}
+    myStation = MyTent.objects.get(User=request.user)
+    dictValues['station'] = myStation
+    return render_to_response('spacecraft.html',dictValues)
 
 #test views
 class listener(StreamListener):
