@@ -131,3 +131,4 @@ PROJECT_ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), os.p
 MEDIA_ROOT = os.path.join(PROJECT_ROOT_PATH,'static/media/')
 MEDIA_URL = '/static/media/'
 
+LOGIN_URL = '/login/'

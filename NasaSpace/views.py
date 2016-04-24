@@ -7,20 +7,24 @@ from tweepy.streaming import StreamListener
 import tweepy
 import os
 import random
+from django.contrib.auth.decorators import login_required
+from django.contrib import auth
 
 ckey = 'nwzgTPY9sYr0L70x61Z7Qzd5Z'
 csecret = 'dRrOCyqH1Jp2j6fv0O9F4yPhvYXF0VmMx8ieyav30E275O13zs'
 atoken = '63136441-BXcHjrKjvefkRbMYXho0ZFvShyGKLBbTUD03wizKB'
 asecret = 'Ht3j7ChKwN0lb21hCo6HRMoUFIiOSzKmv1sjggQFT98vF'
 
-
+@login_required
 def index(request):
     return render_to_response('index.html',{})
 
+@login_required
 def whereAreYouMoon(request):
     dictValues = {}
     return render_to_response('whereAreYouMoon.html',dictValues)
 
+@login_required
 def moonStory(request):
     dictValues = {}
     dictValues = {}
@@ -31,6 +35,7 @@ def moonStory(request):
     dictValues['story'] = randomStory
     return render_to_response('moonStory.html',dictValues)
 
+@login_required
 def tripToApollo(request):
     dictValues = {}
     dictValues = {}
@@ -41,6 +46,7 @@ def tripToApollo(request):
     dictValues['apolloImage'] = randomStory
     return render_to_response('tripToApollo.html',dictValues)
 
+@login_required
 def doYouKnowMoon(request):
     dictValues = {}
     dictValues.update(csrf(request))
@@ -48,6 +54,7 @@ def doYouKnowMoon(request):
     dictValues['questions'] = questions
     return render_to_response('doYouKnowMoon.html',dictValues)
 
+@login_required
 def checkAnswers(request):
     dictValues={}
     answers = []
@@ -66,10 +73,25 @@ def checkAnswers(request):
     dictValues['list'] = zip(answers,correctAnswers)
     return render_to_response('checkAnswers.html',dictValues)
 
+@login_required
 def markMyTerritory(request):
     return render_to_response('markMyTerritory.html',{})
 
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect('/login/')
 
+def login(request):
+    dictValues = {}
+    dictValues.update(csrf(request))
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = auth.authenticate(username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return HttpResponseRedirect('/')
+    return render_to_response('login.html',dictValues)
 
 #test views
 class listener(StreamListener):

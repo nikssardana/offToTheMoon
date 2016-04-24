@@ -28,6 +28,8 @@ urlpatterns = [
     url(r'^moonQuiz$', views.doYouKnowMoon),
     url(r'^checkAnswers$', views.checkAnswers),
     url(r'^markMyTerritory$', views.markMyTerritory),
+    url(r'^logout/$', views.logout),
+    url(r'^login/$', views.login),
 
     #test urls
     url(r'^uploadImage$', views.uploadImage), #upload image on twitter
