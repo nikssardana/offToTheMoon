@@ -77,11 +77,11 @@ var success = function(position) {
     var sunrs = find_sun_and_twi_events_for_date(mj, tz, lon, lat).split(" ");
     var sunrise = sunrs[1];
     var sunset = sunrs[2];
-    document.getElementById('sunrise').innerHTML += sunrise;
-    document.getElementById('sunset').innerHTML += sunset;
-    document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
-    document.getElementById('zodiac').innerHTML += zodiac_sign(today);
-    document.getElementById('mooncent').innerHTML += (moon_day(today)*100).toFixed(2) + "%";
+    //document.getElementById('sunrise').innerHTML += sunrise;
+    //document.getElementById('sunset').innerHTML += sunset;
+    //document.getElementById('date').innerHTML += year + "/" + month + "/" + day;
+    //document.getElementById('zodiac').innerHTML += zodiac_sign(today);
+    //document.getElementById('mooncent').innerHTML += (moon_day(today)*100).toFixed(2) + "%";
 };
 
 if (navigator.geolocation) {
