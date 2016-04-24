@@ -73,9 +73,9 @@ def checkAnswers(request):
     dictValues['list'] = zip(answers,correctAnswers)
     return render_to_response('checkAnswers.html',dictValues)
 
-@login_required
-def markMyTerritory(request):
-    return render_to_response('markMyTerritory.html',{})
+# @login_required
+# def markMyTerritory(request):
+#     return render_to_response('markMyTerritory.html',{})
 
 def logout(request):
     auth.logout(request)
@@ -92,6 +92,21 @@ def login(request):
             auth.login(request,user)
             return HttpResponseRedirect('/')
     return render_to_response('login.html',dictValues)
+
+@login_required
+def spaceStation(request):
+    dictValues = {}
+    dictValues.update(csrf(request))
+    station = MyTent.objects.get(User=request.user)
+    dictValues['visited'] = station.Visited
+    station.Visited = True #mark the station as visited
+    station.save()
+    dictValues['station'] = station
+    return render_to_response('spaceStation.html',dictValues)
+
+@login_required
+def makeWater(request):
+    pass
 
 #test views
 class listener(StreamListener):

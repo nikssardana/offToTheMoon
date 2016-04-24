@@ -5,3 +5,4 @@ from NasaSpace.models import *
 admin.site.register(StoryAboutMoon)
 admin.site.register(ApolloImages)
 admin.site.register(Question)
+admin.site.register(MyTent)
