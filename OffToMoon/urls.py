@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^logout/$', views.logout),
     url(r'^login/$', views.login),
     url(r'^spaceStation/$', views.spaceStation),
+    url(r'^createWater/$', views.createWater),
 
     #test urls
     url(r'^uploadImage$', views.uploadImage), #upload image on twitter

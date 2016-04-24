@@ -4,67 +4,142 @@
 <!-- Modal -->
 
 <script type="text/javascript">
-    $(window).load(function(){
-        $('#myModal').modal('show');
-    });
+$(window).load(function(){
+    $('#welcomeModal').modal('show');
+});
 </script>
 
+
+<script>
+function sendData() {
+    var xmlhttp;
+    if (window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            if(xmlhttp.responseText != 'Error')
+                document.getElementById("waterAmount").innerHTML = xmlhttp.responseText;
+                var myArr = JSON.parse(xmlhttp.responseText);
+                console.log(myArr);
+                document.getElementById("waterAmount").innerHTML = myArr['waterAmount'];
+        }
+    };
+
+    var oxygen = document.getElementById('oxygenForWater').innerHTML;
+    xmlhttp.open("GET","/createWater?oxygen="+oxygen,true);
+    xmlhttp.send();
+}
+</script>
+
+
 <!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div id="welcomeModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Hey!</h4>
-      </div>
-      <div class="modal-body">
-          {% if not visited %}
-          {# if this is the first visit, display the rules #}
-        <p>
-            Welcome to Space Station! Here you will learn how to survive on an extra terrestrial place like the moon!
-        </p>
-        <p><strong>Rules:</strong></p>
-        <p>
-            You, our hero, are on a quest to survive on the moon using the limited resources available to you. You will be given some resources (oxygen,water,hydrogen etc) at the beginning and you will have to use the natural cycles to survive.
-        </p>
+        <!-- Welcome Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Hey!</h4>
+            </div>
+            <div class="modal-body">
+                {% if not visited %}
+                {# if this is the first visit, display the rules #}
+                <p>
+                Welcome to Space Station! Here you will learn how to survive on an extra terrestrial place like the moon!
+                </p>
+                <p><strong>Rules:</strong></p>
+                <p>
+                You, our hero, are on a quest to survive on the moon using the limited resources available to you. You will be given some resources (oxygen,water,hydrogen etc) at the beginning and you will have to use the natural cycles to survive.
+                </p>
 
-        <p>
-        The resources will run out eventually!
-        </p>
+                <p>
+                The resources will run out eventually!
+                </p>
 
-        <p>
-            Running out of resources? Go to the quiz section, answer correctly and earn more resources!
-        </p>
+                <p>
+                Running out of resources? Go to the quiz section, answer correctly and earn more resources!
+                </p>
 
-        <p>
-            So let's begin the expedition, cadet!
-        </p>
-            {% else %}
-            <p>
+                <p>
+                So let's begin the expedition, cadet!
+                </p>
+                {% else %}
+                <p>
                 Hola Astronaut! Welcome Back!
-            </p>
-        {% endif %}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
+                </p>
+                {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
 
-  </div>
+    </div>
 </div>
-<!-- Modal Ends -->
+<!-- Welcome Modal Ends -->
+
+
+<div id="createWaterModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Create Water Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create Water</h4>
+            </div>
+            <div class="modal-body">
+
+                <p>
+                    Enter the amount of Oxygen to be used to make water:
+                    <input id="oxygenForWater" type="number" max={{station.Oxygen}} min=0>
+                </p>
+                <p>
+                    The Water Harvesting plant will generate water for you using basic chemistry:
+                </p>
+                <p>
+                    <i>2H<sub>2</sub> + O<sub>2</sub> ---> 2H<sub>2</sub>O </i>
+                </p>
+
+                <p>
+                <button class="btn btn-info" onclick="sendData()">Make Water</button>
+                </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Create Water Modal Ends -->
+
+
+<script>
+//Create water using Oxygen and Hydrogen
+function createWater()
+{
+    $('#createWaterModal').modal('show');
+}
+</script>
 
 <!-- Content -->
 <table class="table table-hover table-striped">
-        <tr><td> <i class="fa fa-2x fa-opera">Oxygen: {{station.Oxygen}} Units</i></td></tr>
-        <tr><td> <i class="fa fa-2x fa-header">Hydrogen: {{station.Hydrogen}} Units</i></td></tr>
-        <tr><td> <i class="fa fa-2x fa-tint">Water: {{station.Water}} Units</i></td></tr>
-        <tr><td> <i class="fa fa-2x fa-wheelchair">Poop: {{station.Poop}} Units</i></td></tr>
-        <tr><td> <i class="fa fa-2x fa-fire">Fuel: {{station.Fuel}} Units (unlocks at the next level!)</i></td></tr>
-        <tr><td> <i class="fa fa-2x fa-times">Carbon Dioxide: {{station.CarbonDioxide}} Units</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-opera">Oxygen: {{station.Oxygen}} Units</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-header">Hydrogen: {{station.Hydrogen}} Units</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-tint">Water: <span id='waterAmount'>{{station.Water}}</span> Units</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-wheelchair">Poop: {{station.Poop}} Units</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-fire">Fuel: {{station.Fuel}} Units (unlocks at the next level!)</i></td></tr>
+    <tr><td> <i class="fa fa-2x fa-times">Carbon Dioxide: {{station.CarbonDioxide}} Units</i></td></tr>
 </table>
+
+<button class="btn btn-info" onclick="createWater();">Create Water</a></button>
 
 <!-- Content Ends -->
 {% endblock %}

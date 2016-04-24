@@ -9,6 +9,7 @@ import os
 import random
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from django.http import JsonResponse
 
 ckey = 'nwzgTPY9sYr0L70x61Z7Qzd5Z'
 csecret = 'dRrOCyqH1Jp2j6fv0O9F4yPhvYXF0VmMx8ieyav30E275O13zs'
@@ -105,7 +106,26 @@ def spaceStation(request):
     return render_to_response('spaceStation.html',dictValues)
 
 @login_required
-def makeWater(request):
+def createWater(request):
+    oxygen = request.GET.get('oxygen')
+    try:
+        oxygen = int(oxygen)
+        myStation = MyTent.objects.get(User=request.user)
+        #decrease oxygen and hydrogen, increase water
+        myStation.Oxygen -= oxygen
+        myStation.Hydrogen -= oxygen*2
+        myStation.Water += oxygen*2
+        myStation.save()
+
+        #create and send a json response
+        dictValues = {}
+        dictValues['oxygenAmount'] = myStation.Oxygen
+        dictValues['hydrogenAmount'] = myStation.Hydrogen
+        dictValues['waterAmount'] = myStation.Water
+        return JsonResponse(dictValues)
+    except:
+        return HttpResponse('Error')
+
     pass
 
 #test views
