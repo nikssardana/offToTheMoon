@@ -10,15 +10,17 @@
 <div class='container'>
 <div class="row">
 	<div class="col s12">
-		<a class="btn btn-danger btn-large center-align" href="/bigbang"/> <i class="material-icon">Add</i> </a>
 		<div class="list-group">
-            <a href="#" class="list-group-item">Fireplace<span class="badge"> {{ station.Fuel }} </span></a>
+		<a class="btn btn-danger btn-large pull-right" href="/bigbang"/> <i class="fa fa-2x fa-plus"></i> </a>
+		<a class="btn btn-info btn-large " onclick="window.history.back();"/> <i class="fa fa-2x fa-arrow-left"></i> </a>
+            <a href="#" class="list-group-item">Fireplace<span class="badge"> 1 </span></a>
             <a href="#" class="list-group-item">H<sub>2</sub>O(Water)<span class="badge"> {{ station.Water }} </span></a>
             <a href="#" class="list-group-item">H<sub>2</sub>(Hydrogen)<span class="badge"> {{ station.Hydrogen }} </span></a>
             <a href="#" class="list-group-item">O<sub>2</sub>(Oxygen)<span class="badge"> {{ station.Oxygen }} </span></a>
             <a href="#" class="list-group-item">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(Food)<span class="badge"> {{ station.Food }} </span></a>
             <a href="#" class="list-group-item">Poop<span class="badge"> {{ station.Poop }} </span></a>
             <a href="#" class="list-group-item">CO<sub>2</sub>(Carbon Dioxide)<span class="badge"> {{ station.CarbonDioxide }} </span></a>
+
 		</div>
 	</div>
 </div>

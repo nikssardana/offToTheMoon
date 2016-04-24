@@ -70,7 +70,14 @@ def checkAnswers(request):
         if ans == question.correctAns:
             score+=1
 
+    myStation = MyTent.objects.get(User=request.user)
+    myStation.Oxygen += 2*score
+    myStation.Hydrogen += 2*score
+    myStation.save()
+
     dictValues['score'] = score
+    dictValues['oxygenLevel'] = myStation.Oxygen
+    dictValues['hydrogenLevel'] = myStation.Hydrogen
     dictValues['list'] = zip(answers,correctAnswers)
     return render_to_response('checkAnswers.html',dictValues)
 
