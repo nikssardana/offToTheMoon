@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-11 col-xs-offset-1">
+            <form action="/bigbang/" method="POST">
+                {%csrf_token%}
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="fireplace" name="fireplace" />
+                    <label for="fuel">Fireplace</label> <i class="material-icons">12</i>
+                </div>
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="water" name="water" />
+                    <label for="water">H<sub>2</sub>O(Water)</label>
+                </div>
+
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="hydrogen" name="hydrogen" />
+                    <label for="hydrogen">H<sub>2</sub>(Hydrogen)</label>
+                </div>
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="oxygen" name="oxygen" />
+                    <label for="oxygen">O<sub>2</sub>(Oxygen)</label>
+                </div>
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="food" name="food" />
+                    <label for="food">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub>(Food)</label>
+                </div>
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="poop" name="poop" />
+                    <label for="poop">Poop</label>
+                </div>
+
+                </p>
+
+                <p>
+                <div class="checkbox checkbox-primary"><input type="checkbox" value="carbondioxide" name="carbondioxide" />
+                    <label for="carbondioxide">CO<sub>2</sub>(Carbon Dioxide)</label>
+                </div>
+                </p>
+
+                <button class="btn btn-info" type="submit" name="action">Make Bang
+                    <i class="material-icons right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^moonland/$', views.moonland),
     url(r'^spacecraft/$', views.spacecraft),
     url(r'^createWater/$', views.createWater),
+    url(r'^bigbang/$', views.bigbang),
 
     #test urls
     url(r'^uploadImage$', views.uploadImage), #upload image on twitter

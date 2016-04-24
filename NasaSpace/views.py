@@ -141,6 +141,26 @@ def spacecraft(request):
     dictValues['station'] = myStation
     return render_to_response('spacecraft.html',dictValues)
 
+@login_required
+def bigbang(request):
+    dictValues = {}
+    dictValues.update(csrf(request))
+    myStation = MyTent.objects.get(User=request.user)
+    dictValues['station'] = myStation
+    if request.method != 'POST':
+        return render_to_response('bigbang.html',dictValues)
+    postedValues =  request.POST
+    print postedValues
+    if 'hydrogen' and 'oxygen' in postedValues:
+        myStation.Hydrogen -= 2
+        myStation.Oxygen -= 1
+        myStation.Water += 2
+        myStation.save()
+
+
+    return HttpResponseRedirect('/spacecraft/')
+    #return render_to_response('bigbang.html',dictValues)
+
 #test views
 class listener(StreamListener):
     def on_data(self, data):
